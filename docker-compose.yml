@@ -1,0 +1,33 @@
+version: '3'
+volumes:
+  pgdata:
+  static_files:
+services:
+  postgres:
+    image: postgres:10.3
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: base
+      POSTGRES_PASS: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  base:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/postgres
+    volumes:
+      - static_files:/staticfiles
+    ports:
+      - "8000:8000"
+    command: pytest && gunicorn -w 4 --threads 50 base.wsgi -b 0.0.0.0:8000
+    depends_on:
+      - postgres

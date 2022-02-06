@@ -1,0 +1,23 @@
+[run]
+omit =
+	*__init__.py,
+	*admin.py,
+	*apps.py,
+	*tests.py,
+	*tasks.py,
+	*migrations/*,
+	*settings/*,
+	*tests/*,
+	*venv/*,
+	*urls.py,
+	*models.py,
+	*serializers.py,
+	*adapters.py,
+	*validation.py,
+	*backends.py,
+	*wsgi.py,
+	*asgi.py,
+	*celery.py,
+	*test_sample.py
+	*test_settings.py
+	manage.py
