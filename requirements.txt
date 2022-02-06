@@ -1,0 +1,20 @@
+# automated tests
+pytest-django==4.2.0
+pytest==6.2.3
+pytest-cov==2.11.1
+
+# static/media files
+django-storages==1.11.1
+boto3==1.17.61
+
+# db
+psycopg2-binary==2.8.6
+dj-database-url==0.5.0
+
+# tools
+django==3.1.7
+django-debug-toolbar==3.2.2
+python-decouple==3.4
+
+# web server
+gunicorn==20.0.4
