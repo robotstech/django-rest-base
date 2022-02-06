@@ -17,7 +17,10 @@ from decouple import config
 
 from base.environment import Environment
 
+API_VERSION = "1"
 SERVICE_NAME = "base"
+API_PREFIX = f"api/v{API_VERSION}"
+FRONTEND_HOST = config("FRONTEND_HOST")
 ENVIRONMENT = Environment.get(config("ENVIRONMENT"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -48,10 +51,13 @@ INSTALLED_APPS = [
     # third-party installed apps
     'storages',
     'debug_toolbar',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -137,3 +143,25 @@ PUBLIC_MEDIA_LOCATION = f'{ENVIRONMENT.value}/{SERVICE_NAME}/media/public'
 MEDIA_URL = f'{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = 'base.storage_backends.PublicMediaStorage'
 PRIVATE_FILE_STORAGE = 'base.storage_backends.PrivateMediaStorage'
+
+# rest settings
+REST_FRAMEWORK = {}
+
+# cors settings
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = CORS_ORIGIN_ALLOW_ALL = False
+CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST = CSRF_TRUSTED_ORIGINS = [
+    f"https://{FRONTEND_HOST}"
+]
+if ENVIRONMENT in [Environment.LOCAL, Environment.DEV]:
+    CORS_ALLOWED_ORIGINS.append("http://127.0.0.1:3000")
+
+if ENVIRONMENT not in [Environment.LOCAL, Environment.CI]:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer'
+    ]
+
+    SESSION_COOKIE_SAMESITE = 'None'
+    CSRF_COOKIE_SAMESITE = 'None'
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True

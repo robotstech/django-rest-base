@@ -1,11 +1,18 @@
+# rest
+djangorestframework==3.12.4
+
 # automated tests
 pytest-django==4.2.0
 pytest==6.2.3
 pytest-cov==2.11.1
 
 # static/media files
+Pillow==8.2.0
 django-storages==1.11.1
 boto3==1.17.61
+
+# security
+django-cors-headers==3.7.0
 
 # db
 psycopg2-binary==2.8.6

@@ -1,8 +1,8 @@
-# django-base-project
+# django-rest-base-project
 Main => ![ci workflow](https://github.com/LibertytechX/django-base-project/actions/workflows/ci.yml/badge.svg?branch=main) <br>
 Dev ==> ![ci workflow](https://github.com/LibertytechX/django-base-project/actions/workflows/ci.yml/badge.svg?branch=dev) <br>
 InDev => ![ci workflow](https://github.com/LibertytechX/django-base-project/actions/workflows/ci.yml/badge.svg?branch=indev) <br>
-Template project for all Django services developed
+Template project for all Django Rest services developed
 
 ## Tools and Resources
 1. Python 3.8 [link](https://www.python.org/downloads/release/python-387/)
