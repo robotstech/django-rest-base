@@ -51,3 +51,13 @@ You can find out the path to your `python3` interpreter with the command `which 
    ```shell
    docker-compose up --build --remove-orphans
    ```
+   
+## REFERENCES
+- [Django](https://www.djangoproject.com/start/)
+- [DRF](https://www.django-rest-framework.org/)
+- [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+- [Django Storages](https://django-storages.readthedocs.io/en/latest/), for [AWS S3](https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html)
+- [Pytest](https://docs.pytest.org/en/latest/) for [Django](https://pytest-django.readthedocs.io/en/latest/) including [coverage](https://github.com/pytest-dev/pytest-cov)
+- [Python Decouple: Strict separation of settings from code](https://github.com/henriquebastos/python-decouple/)
+- [Gunicorn](https://gunicorn.org/)
+- [The Twelve Factor App](https://12factor.net/)
