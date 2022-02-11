@@ -138,7 +138,7 @@ AWS_DEFAULT_ACL = 'public-read'
 
 STATIC_LOCATION = f'{ENVIRONMENT.value}/{SERVICE_NAME}/static'
 STATIC_URL = f'{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-STATIC_ROOT = Path.joinpath(BASE_DIR, '/static/')
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'base.storage_backends.StaticStorage'
 
 PRIVATE_MEDIA_LOCATION = f'{ENVIRONMENT.value}/{SERVICE_NAME}/media/private'
