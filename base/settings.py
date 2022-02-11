@@ -20,7 +20,10 @@ from base.environment import Environment
 API_VERSION = "1"
 SERVICE_NAME = "base"
 API_PREFIX = f"api/v{API_VERSION}"
+
 FRONTEND_HOST = config("FRONTEND_HOST")
+BACKEND_HOST = config('BACKEND_HOST')
+
 ENVIRONMENT = Environment.get(config("ENVIRONMENT"))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,10 +37,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 # the allowed servers
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [BACKEND_HOST]
 
 # the allowed servers for debugging
-INTERNAL_IPS = ["127.0.0.1", "localhost"]
+INTERNAL_IPS = [BACKEND_HOST] if ENVIRONMENT in {Environment.LOCAL, Environment.DEV} else []
 
 # Application definition
 INSTALLED_APPS = [
@@ -150,11 +153,11 @@ REST_FRAMEWORK = {}
 # cors settings
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_ALL_ORIGINS = CORS_ORIGIN_ALLOW_ALL = False
-CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST = CSRF_TRUSTED_ORIGINS = [
-    f"https://{FRONTEND_HOST}"
-]
-if ENVIRONMENT in [Environment.LOCAL, Environment.DEV]:
-    CORS_ALLOWED_ORIGINS.append("http://127.0.0.1:3000")
+CORS_ALLOWED_ORIGINS = CORS_ORIGIN_WHITELIST = CSRF_TRUSTED_ORIGINS = []
+if ENVIRONMENT in [Environment.LOCAL, Environment.DEV, Environment.CI]:
+    CORS_ALLOWED_ORIGINS.append(f"http://{FRONTEND_HOST}")
+else:
+    CORS_ALLOWED_ORIGINS.append(f"https://{FRONTEND_HOST}")
 
 if ENVIRONMENT not in [Environment.LOCAL, Environment.CI]:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
