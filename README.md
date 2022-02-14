@@ -1,7 +1,7 @@
 # django-rest-base-project
-Main => ![ci workflow](https://github.com/LibertytechX/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=main) <br>
-Dev ==> ![ci workflow](https://github.com/LibertytechX/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=dev) <br>
-InDev => ![ci workflow](https://github.com/LibertytechX/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=indev) <br>
+Main => ![ci workflow](https://github.com/robotstech/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=main) <br>
+Dev ==> ![ci workflow](https://github.com/robotstech/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=dev) <br>
+InDev => ![ci workflow](https://github.com/robotstech/django-rest-base-project/actions/workflows/ci.yml/badge.svg?branch=indev) <br>
 Template project for all Django Rest services developed
 
 ## Tools and Resources
